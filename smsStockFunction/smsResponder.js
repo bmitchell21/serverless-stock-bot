@@ -30,8 +30,7 @@ const sendSMS = async function (params) {
 
 const smsResponder = async (event) => {
 
-    var message = event.Records[0].Sns.MessageConfiguration
-    var msgJson = JSON.parse(message)
+	const msg = JSON.parse(event.Sns.Message)
 	const msgWords = msg.messageBody.split(" ")
 
 	// Check the first word of the text message is the keyword
