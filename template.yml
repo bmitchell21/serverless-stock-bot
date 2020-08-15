@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
   Pinpoint Stock Bot - responds to a text message from a user with current stock price.
-  Incoming text message must conform to the format "$<<stockname>>", or it will be ignored.
+  Incoming text message must conform to the format "stock stocksymbol", or it will be ignored.
 Metadata:
   AWS::ServerlessRepo::Application:
     Name: 'Pinpoint-Stock-Bot'
