@@ -28,3 +28,9 @@ sam package --output-template-file packaged.yaml --s3-bucket YOUR BUCKET HERE
 sam deploy --template-file packaged.yaml --stack-name myStockApp --capabilities CAPABILITY_IAM --region us-east-1 --parameter-overrides APIkey=YOUR API TOKEN ApplicationId=YOUR PROJECT ID
 
 
+# Remaining steps
+
+13. Navigate to the project in Pinpoint.
+14. choose Settings, SMS and voice.
+15. Number settings --> corresponding phone number. Expand the Two-way SMS section then check Enable two-way SMS.
+16. Choose the corresponding ARN. Save.
