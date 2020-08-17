@@ -1,3 +1,4 @@
+'use strict'
 
 const axios = require('axios')
 const stockURL = 'https://api.tiingo.com/tiingo/daily/'
@@ -12,14 +13,17 @@ const getStock = async function (stockCode) {
   try {
     // Get stock for company provided
     const response = await axios({
-      url: `${stockURL}${stockCode}${endUrl}&token=${process.env.APIkey}`,
+      url: `${stockURL}${stockCode}${endUrl}?token=${process.env.APIkey}`,
       method: 'get',
       port: 443,
       responseType: JSON
     })
 
+
+    
     // Build natural response
-    const stock = ` Here is your request stock info: Open - ${parseInt(response.data.open)} Low - ${parseInt(response.data.low)} High - ${parseInt(response.data.high)}.`
+    const result = response.data[0] || {};
+    const stock = ` Here is your requested stock info: Open - ${parseInt(result.open)} Low - ${parseInt(result.low)} High - ${parseInt(result.high)}.`
     console.log('getStock response: ', stock)
     return stock
 

@@ -13,7 +13,7 @@ Parameters:
   APIkey:
     Type: String
     Default: 'APIkey'
-    Description: (Required) Open API key
+    Description: (Required) OpenWeatherMap API key
     AllowedPattern: ^[A-Za-z0-9-]+$
     ConstraintDescription: 'Required parameter.'
   ApplicationId:
