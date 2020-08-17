@@ -7,18 +7,18 @@ const { getStock } = require('./getStock')
 const KEYWORD = 'stock'
 
 const validateStock = function (elementValue){
-  let stockTest = /^\d{5}$|^\d{5}-\d{4}$/
+  let stockTest = /^[a-zA-Z]{1,4}$/
    return stockTest.test(elementValue)
 }
 
 const sendSMS = async function (params) {
 	const pinpoint = new AWS.Pinpoint()
-	console.log('sendSMS called: ', JSON.stringify(params, null, 2))
+	console.log('sendSMS called: ', params)
 
 	return new Promise((resolve, reject) => {
 		pinpoint.sendMessages(params, function(err, data) {
 			if(err) {
-				console.error('sendSMS error:', err)
+				console.error(err)
 				reject(err)
 			} else {
 				console.log("Message sent. Data: ", data)
@@ -47,7 +47,7 @@ const smsResponder = async (event) => {
 	}
 
 	// Send the SMS response
-	var params = {
+	const params = {
 		ApplicationId: process.env.ApplicationId,
 		MessageRequest: {
 			Addresses: {
@@ -67,6 +67,10 @@ const smsResponder = async (event) => {
 
 	return console.log(await sendSMS(params))
 }
+
+
+
+
 
 
 module.exports = { smsResponder }
